@@ -71,3 +71,28 @@ Route::get("hemligt", [About::class, 'loadsecretView']);
 //Simulate an API call
 Route::get("apiperson", [Users::class, 'personinfo']);
 Route::get("apipersoner", [Users::class, 'mangapersonersinfo']);
+
+
+Route::get('/hem', function () {
+    return view('home');    //must correspond the filename without suffic .blade.php
+});
+
+
+Route::get('/portal', function () {
+    return view('portal');    //must correspond the filename without suffic .blade.php
+});
+
+Route::get('/form/customer', function () {
+    return view('formcustomer');    //must correspond the filename without suffic .blade.php
+});
+
+//Illuminate\Http\Request    represent a HTTP request
+Route::post('/saveform', function (Illuminate\Http\Request $request) {
+    //$name=$_POST['inputedname'];
+    //$email=$_POST['inputedemail'];
+
+    $name = $request->input('inputedname');
+    $email = $request->input('inputedemail');
+    return view('submitform', ['namepassed' => $name, 'emailpassed' => $email]);
+});
+
