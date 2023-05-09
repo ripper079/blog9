@@ -45,33 +45,12 @@ Route::get('/kontakt/{namn}', function($namn){
     return view('contact', ['passedname' =>$namn]);
 });
 
-//Redirection
-Route::get('/startsida', function(){
-    //Remeber it is the ROUTE is redirects to
-    return redirect("omoss");
-});
-
-//CONTROLLER CONTROLLER CONTROLLERS
-// Route::get("path", "controller file")
-//In larawell 7 (and previous version) the following syntax, param1=route and param2=controllername@functiontoinvoke
-//PS. Capitilization matters
-//Route::get("boss", "Users@index");
-//route and controllername::class and method in that controller
-Route::get("boss", [Users::class, 'index']);
-//Passing argument to method-> route/{parameternameincontrollerfunction} and [<contollername>::class, 'methodtoinvoke']
-Route::get("lekamednummer/{anumber}", [Users::class, 'displaystringnumber']);
-
 Route::get('/hemligt', function () {
     return view('secret');    //must correspond the filename without suffic .blade.php
 });
 
-Route::get("hemligt", [About::class, 'loadsecretView']);
-
-
-//Simulate an API call
-Route::get("apiperson", [Users::class, 'personinfo']);
-Route::get("apipersoner", [Users::class, 'mangapersonersinfo']);
-
+//Single line get request
+Route::view('rik', "howrich");
 
 Route::get('/hem', function () {
     return view('home');    //must correspond the filename without suffic .blade.php
@@ -81,6 +60,15 @@ Route::get('/hem', function () {
 Route::get('/portal', function () {
     return view('portal');    //must correspond the filename without suffic .blade.php
 });
+
+
+//Redirection
+Route::get('/startsida', function(){
+    //Remeber it is the ROUTE is redirects to
+    return redirect("omoss");
+});
+
+//Input into a form
 
 Route::get('/form/customer', function () {
     return view('formcustomer');    //must correspond the filename without suffic .blade.php
@@ -95,4 +83,25 @@ Route::post('/saveform', function (Illuminate\Http\Request $request) {
     $email = $request->input('inputedemail');
     return view('submitform', ['namepassed' => $name, 'emailpassed' => $email]);
 });
+
+
+//CONTROLLER CONTROLLER CONTROLLERS
+// Route::get("path", "controller file")
+//In larawell 7 (and previous version) the following syntax, param1=route and param2=controllername@functiontoinvoke
+//PS. Capitilization matters
+//Route::get("boss", "Users@index");
+//route and controllername::class and method in that controller
+Route::get("boss", [Users::class, 'index']);
+//Passing argument to method-> route/{parameternameincontrollerfunction} and [<contollername>::class, 'methodtoinvoke']
+Route::get("lekamednummer/{anumber}", [Users::class, 'displaystringnumber']);
+
+Route::get("hemligt", [About::class, 'loadsecretView']);
+
+//SIMULATE an API call!
+Route::get("apiperson", [Users::class, 'personinfo']);
+Route::get("apipersoner", [Users::class, 'mangapersonersinfo']);
+
+
+
+
 

@@ -1,3 +1,6 @@
+<!-- Using the component banner here¨ -->
+<x-logobanner data="Katten Gustav"/>
+
 <h1>Portal Page</h1>
 <p>Previous Page={{URL::previous()}}</p><br>
 <a href="/hej">Go to HELLO</a><br>
