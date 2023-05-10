@@ -5,6 +5,8 @@
 @foreach ($countrieslist as $country)
     @if ($country == 'Sweden')
         <li>{{ $country }} - home of IKEA!</li>
+    @elseif ($country == 'Finland')
+        <li>{{ $country }} - home of Sauna!</li>
     @else
         <li>{{ $country }}</li>
     @endif
@@ -19,3 +21,14 @@
     @endif
 @endforeach
 </ul>
+
+@for ($i = 0; $i < count($countrieslist); ++$i)
+    <h4>{{ $countrieslist[$i] }}</h4>
+@endfor
+
+<!-- Even possible to pass it and use it in javascript -->
+@csrf
+<script>
+    var data=@json($countrieslist);
+    console.warn(data[0]);
+</script>
