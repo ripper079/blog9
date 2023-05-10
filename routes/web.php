@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //Must import the controller
 use App\Http\Controllers\Users;
 use App\Http\Controllers\About;
+use App\Http\Controllers\CountrybladeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,7 @@ Route::get("apiperson", [Users::class, 'personinfo']);
 Route::get("apipersoner", [Users::class, 'mangapersonersinfo']);
 
 
-
+Route::get("demobladetemplate", [CountrybladeController::class, 'viewLoad']);
+Route::get("demobladetemplatecountries", [CountrybladeController::class, 'viewCountryNames']);
 
 
